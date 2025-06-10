@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     HomeUI homeUI;
     GameUI gameUI;
     GameOverUI gameOverUI;
+
+    private StatData statData;
 
     private UIState currentState;
 
@@ -57,5 +59,10 @@ public class UIManager : MonoBehaviour
         homeUI.SetActive(currentState);
         gameUI.SetActive(currentState);
         gameOverUI.SetActive(currentState);
+    }
+
+    public void CoinCount(float coin)
+    {
+        gameUI.UpdateCoinText(coin);
     }
 }

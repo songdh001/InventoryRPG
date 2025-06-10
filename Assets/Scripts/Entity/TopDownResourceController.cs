@@ -10,10 +10,12 @@ public class ResourceController : MonoBehaviour
     private BaseController baseController;
     private StatHandler statHandler;
     private AnimationHandler animationHandler;
+    private UIManager uiManager;
 
     private float timeSinceLastChange = float.MaxValue;
 
     public float CurrentHealth { get; private set; }
+    public float CurrentCoin;
     public float MaxHealth => statHandler.GetStat(StatType.Health);
 
 
@@ -32,6 +34,7 @@ public class ResourceController : MonoBehaviour
     private void Start()
     {
         CurrentHealth = statHandler.GetStat(StatType.Health);
+        CurrentCoin = statHandler.GetStat(StatType.Coin);
     }
 
     private void Update()
@@ -44,6 +47,7 @@ public class ResourceController : MonoBehaviour
                 animationHandler.InvincibilityEnd();
             }
         }
+        uiManager.CoinCount(CurrentCoin);
     }
 
     public bool ChangeHealth(float change)
@@ -92,4 +96,6 @@ public class ResourceController : MonoBehaviour
     {
         OnChangeHealth -= action;
     }
+
+
 }
