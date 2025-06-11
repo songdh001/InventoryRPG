@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     HomeUI homeUI;
     GameUI gameUI;
     GameOverUI gameOverUI;
+    MainMenuUI mainMenuUI;
+    InventoryUI inventoryUI;
+    StatusUI statusUI;
 
     private StatData statData;
 
@@ -27,6 +30,12 @@ public class UIManager : MonoBehaviour
         gameUI.Init(this);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI.Init(this);
+        mainMenuUI = GetComponentInChildren<MainMenuUI>(true);
+        mainMenuUI.Init(this);
+        inventoryUI = GetComponentInChildren<InventoryUI>(true);
+        inventoryUI.Init(this);
+        statusUI = GetComponentInChildren<StatusUI>(true);
+        statusUI.Init(this);
 
         ChangeState(UIState.Home);
 
@@ -59,6 +68,9 @@ public class UIManager : MonoBehaviour
         homeUI.SetActive(currentState);
         gameUI.SetActive(currentState);
         gameOverUI.SetActive(currentState);
+        mainMenuUI.SetActive(currentState);
+        inventoryUI.SetActive(currentState);
+        statusUI.SetActive(currentState);
     }
 
     public void CoinCount(float coin)
